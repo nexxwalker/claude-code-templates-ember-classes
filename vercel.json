@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build --prefix cli-tool/analytics-ui",
+  "installCommand": "npm install --prefix cli-tool/analytics-ui",
+  "outputDirectory": "cli-tool/src/analytics-web",
+  "framework": "astro"
+}
