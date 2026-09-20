@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build --prefix cli-tool/analytics-ui",
-  "installCommand": "npm install --prefix cli-tool/analytics-ui",
-  "outputDirectory": "public",
+  "buildCommand": "npm run build --prefix dashboard",
+  "installCommand": "npm install --prefix dashboard",
+  "outputDirectory": "dashboard/dist",
   "framework": "astro"
 }
