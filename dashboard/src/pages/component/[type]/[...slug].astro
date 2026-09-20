@@ -25,11 +25,13 @@ try {
   const data = await fetchComponents();
   const typeKey = (type?.endsWith('s') ? type : (type + 's')) as keyof typeof data;
   const items = data[typeKey] as Component[] | undefined;
-
+  const requestedSlug = decodeURIComponent(slug ?? '').replace(/^\/+|\/+$/g, '');
+  
   if (items) {
     component = items.find((c) => {
-      const cleanPath = c.path?.replace(/\.(md|json)$/, '') ?? '';
-      return cleanPath === slug || c.name === slug;
+      const cleanPath = (c.path?.replace(/\.(md|json)$/, '') ?? '').replace(/^\/+|\/+$/g, '');
+      const cleanName = c.name?.replace(/\.(md|json)$/, '') ?? '';
+      return cleanPath === requestedSlug || cleanName === requestedSlug || cleanPath.endsWith(`/${requestedSlug}`);
     }) ?? null;
   }
 

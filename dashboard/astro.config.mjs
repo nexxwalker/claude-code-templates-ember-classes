@@ -1,12 +1,12 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import cloudflare from '@astrojs/cloudflare';
+import vercel from '@astrojs/vercel/serverless';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://www.aitmpl.com',
+  site: 'https://emberspack-inc.vercel.app',
   output: 'server',
-  adapter: cloudflare({ mode: 'directory' }),
+  adapter: vercel(),
   integrations: [react()],
   vite: {
     plugins: [

@@ -1,6 +1,5 @@
 {
   "buildCommand": "npm run build --prefix dashboard",
   "installCommand": "npm install --prefix dashboard",
-  "outputDirectory": "dashboard/dist",
   "framework": "astro"
 }
