@@ -20,8 +20,8 @@ export const GET: APIRoute = async ({ request }) => {
 
     const items = collections.length > 0
       ? await sql`
-          SELECT * FROM collection_items
-          WHERE collection_id = ANY(${collections.map((c: any) => c.id)})
+      SELECT * FROM collection_items
+      WHERE collection_id = ANY(${sql.array(collections.map((c: any) => c.id), 'bigint')})
           ORDER BY added_at ASC
         `
       : [];
