@@ -28,7 +28,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     const dup = await sql`
       SELECT id FROM collection_items
-      WHERE collection_id = ${collectionId} AND component_path = ${componentPath}
+      WHERE collection_id = ${collectionId}
+        AND component_type = ${componentType}
+        AND component_path = ${componentPath}
     `;
     if (dup.length > 0) {
       return jsonResponse({ error: 'Component already in this collection' }, 409);
@@ -36,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const rows = await sql`
       INSERT INTO collection_items (collection_id, component_type, component_path, component_name, component_category)
-      VALUES (${collectionId}, ${componentType}, ${componentPath}, ${componentName}, ${componentCategory || null})
+      VALUES (${collectionId}, ${componentType}, ${componentPath}, ${componentName}, ${componentCategory || ''})
       RETURNING *
     `;
 
